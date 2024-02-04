@@ -28,7 +28,7 @@ func Sync(syncParams SyncParams) {
 	browserPath := os.Getenv(EnvVarBrowserPath)
 	playlistUrl := os.Getenv(EnvVarApplePlaylistUrl)
 
-	url := launcher.New().Bin(browserPath).MustLaunch()
+	url := launcher.New().Bin(browserPath).Set("--no-sandbox").MustLaunch()
 	page := rod.New().ControlURL(url).MustConnect().MustPage(playlistUrl).MustWaitStable()
 
 	fmt.Printf("Browser Path: %s\n", browserPath)
